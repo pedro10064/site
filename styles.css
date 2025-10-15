@@ -1,0 +1,50 @@
+/* ...existing styles... */
+:root { --bg: #fff; --fg: #111; --muted: #666; --line: #e6e6e6; --shadow: 0 2px 12px rgba(0,0,0,.06); }
+:root { --font-main: "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, sans-serif; --base-size: 16px; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-main); font-size: var(--base-size); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.app-header, .app-footer { padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.app-footer { border-top: 1px solid var(--line); border-bottom: none; color: var(--muted); }
+.brand { margin: 0; font-weight: 600; letter-spacing: .2px; }
+.disclaimer { margin: 6px 0 0; color: var(--muted); }
+.layout { display: grid; grid-template-columns: 1fr 320px; gap: 20px; padding: 20px; }
+@media (max-width: 880px) { .layout { grid-template-columns: 1fr; } .panel { order: -1; } }
+.chat { display: flex; flex-direction: column; min-height: 60vh; }
+.messages { flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); overflow-y: auto; }
+.input-row { display: grid; grid-template-columns: 1fr auto auto auto; gap: 8px; margin-top: 10px; }
+textarea { width: 100%; resize: vertical; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 16px; }
+button { cursor: pointer; border: 1px solid var(--line); background: #fff; color: var(--fg); padding: 10px 14px; border-radius: 8px; transition: transform .08s ease, box-shadow .15s ease, background .15s ease; }
+button:hover { box-shadow: var(--shadow); }
+button.primary { background: #111; color: #fff; border-color: #111; }
+button.secondary { background: #f7f7f7; }
+button.danger { background: #d32f2f; border-color: #d32f2f; color: #fff; }
+.panel { display: flex; flex-direction: column; gap: 16px; }
+.card { border: 1px solid var(--line); border-radius: 10px; padding: 14px; box-shadow: var(--shadow); }
+.mood-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.mood { font-size: 14px; padding: 8px 10px; }
+.message { display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: start; }
+.avatar { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); background: #fff; }
+.bubble { padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
+.meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.message.user .bubble { background: #fafafa; }
+.message.assistant .bubble { background: #fff; }
+.breath { display: grid; place-items: center; gap: 8px; padding: 12px; }
+.circle { width: 80px; height: 80px; border: 2px solid var(--line); border-radius: 50%; transition: transform 4s ease-in-out; }
+.circle.expand { transform: scale(1.35); }
+dialog { border: 1px solid var(--line); border-radius: 12px; padding: 16px; box-shadow: var(--shadow); max-width: 520px; }
+.resources { list-style: none; padding: 0; margin: 0; }
+.resources li { margin: 6px 0; }
+a { color: inherit; text-decoration-color: #aaa; }
+#voice-btn { width: 44px; padding: 10px; }
+#voice-btn.recording { background: #111; color: #fff; border-color: #111; }
+.theme-dark { --bg: #0e0e0e; --fg: #f5f5f5; --muted: #b5b5b5; --line: rgba(255,255,255,.18); }
+.theme-dark button.primary { background: #fff; color: #111; border-color: #fff; }
+
+body.bg-gradient { background: linear-gradient(120deg,#ff9a9e, #fad0c4 50%, #fbc2eb); background-size: 200% 200%; animation: bgShift 12s ease infinite; }
+body.bg-aurora { background: radial-gradient(1200px 600px at 10% 10%, #7bdff2 0%, transparent 60%), radial-gradient(800px 500px at 90% 20%, #b2f7ef 0%, transparent 60%), radial-gradient(900px 500px at 30% 90%, #ffd6e0 0%, transparent 60%), #0e0e14; color: #f5f5f5; }
+body.bg-mosaic { background: repeating-conic-gradient(from 0deg, #ffe29f 0 25deg, #ffa99f 25deg 50deg, #fad0c4 50deg 75deg, #fbc2eb 75deg 100deg); background-size: 80px 80px; }
+body.bg-rainbow { background: linear-gradient(120deg,#ff6b6b,#feca57,#1dd1a1,#54a0ff,#5f27cd,#ee5253); background-size: 300% 300%; animation: rainbowShift 18s ease infinite; }
+@keyframes bgShift { 0%{background-position: 0% 50%;} 100%{background-position: 100% 50%;} }
+@keyframes rainbowShift { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }

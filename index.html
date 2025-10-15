@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ...existing content... -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PsicoloIA — apoyo emocional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "dayjs": "https://cdn.jsdelivr.net/npm/dayjs@1.11.11/+esm"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- ...existing content... -->
+  <header class="app-header" role="banner">
+    <h1 class="brand"><span id="brand-name">PsicoloIA</span></h1>
+    <p class="disclaimer" aria-live="polite">No es terapia médica. Si estás en peligro, busca ayuda inmediata.</p>
+  </header>
+
+  <main class="layout" role="main">
+    <section class="chat" aria-label="Conversación de apoyo">
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <form id="input-form" class="input-row">
+        <label for="user-input" class="visually-hidden">Escribe tu mensaje</label>
+        <textarea id="user-input" rows="2" placeholder="¿Qué te gustaría compartir hoy?" required></textarea>
+        <button id="voice-btn" type="button" class="secondary" aria-pressed="false" title="Hablar por voz">🎤</button>
+        <button id="send-btn" type="submit" class="primary">Enviar</button>
+        <button id="reset-btn" type="button" class="danger" title="Reiniciar chat">Reiniciar</button>
+      </form>
+    </section>
+
+    <aside class="panel" aria-label="Herramientas y estado">
+      <div class="card">
+        <h2>Estado emocional</h2>
+        <div class="mood-row">
+          <button class="mood" data-mood="ansioso">Ansioso</button>
+          <button class="mood" data-mood="triste">Triste</button>
+          <button class="mood" data-mood="estresado">Estresado</button>
+          <button class="mood" data-mood="agradecido">Agradecido</button>
+          <button class="mood" data-mood="enojado">Enojado</button>
+          <button class="mood" data-mood="solo">Solo</button>
+          <button class="mood" data-mood="confundido">Confundido</button>
+          <button class="mood" data-mood="cansado">Cansado</button>
+          <button class="mood" data-mood="abrumado">Abrumado</button>
+          <button class="mood" data-mood="esperanzado">Esperanzado</button>
+          <button class="mood" data-mood="motivado">Motivado</button>
+          <button class="mood" data-mood="culpable">Culpable</button>
+        </div>
+        <button id="checkin-btn" class="secondary">Hacer check‑in</button>
+      </div>
+
+      <div class="card">
+        <h2>Respiración guiada</h2>
+        <div id="breath" class="breath">
+          <div class="circle" aria-hidden="true"></div>
+          <p id="breath-text">Inhala 4s</p>
+        </div>
+        <button id="breath-toggle" class="secondary">Iniciar</button>
+      </div>
+
+      <div class="card">
+        <h2>Configuración</h2>
+        <label class="setting">
+          <span>Fondo</span>
+          <select id="bg-style">
+            <option value="light">Blanco</option>
+            <option value="dark">Oscuro</option>
+            <option value="gradient">Gradiente</option>
+            <option value="aurora">Aurora</option>
+            <option value="mosaic">Mosaico</option>
+            <option value="rainbow">Degradé multicolor</option>
+          </select>
+        </label>
+        <button id="assistant-rename" class="secondary">Cambiar nombre</button>
+      </div>
+
+      <div class="card">
+        <h2>Fuentes utilizadas</h2>
+        <ul class="resources" id="sources-list"></ul>
+      </div>
+
+      <div class="card">
+        <h2>Recomendaciones La Plata</h2>
+        <div class="recommendations mood-row">
+          <button class="mood" data-place="villa_elisa">Villa Elisa</button>
+          <button class="mood" data-place="lp_centro">LP Centro</button>
+          <button class="mood" data-place="los_hornos">Los Hornos</button>
+          <button class="mood" data-place="melchor_romero">Melchor Romero</button>
+          <button class="mood" data-place="gonnet">Gonnet</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Recursos de crisis</h2>
+        <ul class="resources" id="resources-list">
+          <!-- ...existing content... -->
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <dialog id="crisis-dialog" aria-labelledby="crisis-title">
+    <h3 id="crisis-title">Puede que necesites ayuda inmediata</h3>
+    <p>Si sientes que puedes hacerte daño o a otra persona, contacta servicios de emergencia o una línea de ayuda ahora.</p>
+    <ul id="crisis-links"></ul>
+    <button id="crisis-close" class="primary">Entendido</button>
+  </dialog>
+
+  <dialog id="name-dialog" aria-labelledby="name-title">
+    <h3 id="name-title">Elige el nombre de tu IA</h3>
+    <label><span class="visually-hidden">Nombre</span><input id="assistant-name-input" type="text" placeholder="Ej: Luna" maxlength="32"></label>
+    <button id="assistant-name-save" class="primary">Guardar</button>
+  </dialog>
+
+  <footer class="app-footer" role="contentinfo">
+    <small>Hecho con empatía. Este servicio no reemplaza la atención profesional.</small>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
